@@ -1,7 +1,7 @@
-<h1>instagram2に新しく写真が投稿されました！</h1>
+<h1>instagram2 new picture</h1>
 
-<p>comment: <%= @picture.comment %></p>
+<p>con: <%= @picture.content %></p>
 
 <p>
-  <%= link_to '投稿されたブログはこちら', pictures_path(@picture) %>
+  <%= link_to 'jump to picture', pictures_url(@picture) %>
 </p>
