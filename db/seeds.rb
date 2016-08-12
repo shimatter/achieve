@@ -6,7 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
+10.times do |n|
+  email = Faker::Internet.email
+  password = "password"
+  User.create!(email: email,
+               name: "test#{n+1}",
+               password: password,
+               password_confirmation: password,
+               uid: "haiudhacfiorcaoeijcaeoircmaeio#{n+1}",
+               provider: "")
+end
 
 
 10.times do |n|
@@ -15,6 +24,6 @@
     src_file = File.new(image_src)
     picture.img = src_file
     picture.content = "comment#{n+1}"
-    picture.user_id = #{n+1}
+    picture.user_id = "#{n+1}"
     picture.save
 end

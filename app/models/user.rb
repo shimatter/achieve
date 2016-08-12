@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
   
-  has_many :pictures
+  has_many :pictures, dependent: :destroy
   mount_uploader :avatar, AvatarUploader
   
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
@@ -47,17 +47,6 @@ class User < ActiveRecord::Base
     SecureRandom.uuid
   end
   
-  def update_without_current_password(params, *options)
-    params.delete(:current_password)
- 
-    if params[:password].blank? && params[:password_confirmation].blank?
-      params.delete(:password)
-      params.delete(:password_confirmation)
-    end
- 
-    result = update_attributes(params, *options)
-    clean_up_passwords
-    result
-  end
+
 
 end

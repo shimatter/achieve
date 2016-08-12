@@ -10,7 +10,9 @@
       <% end %>
     </p>
     <p><%= @picture.content %></p>
-    <%= link_to '編集する', edit_picture_path(@picture), class: 'btn btn-primary btn-block' %>
-    <%= link_to '一覧に戻る', pictures_path, class: 'btn btn-primary btn-block'  %>
+    <% if current_user.id == @picture.user_id %>
+      <%= link_to '編集', edit_picture_path(@picture), class: 'btn btn-default' %> | 
+    <% end %>
+    <%= link_to '戻る', pictures_path, class: 'btn btn-default'  %>
   </div>
 </div>
