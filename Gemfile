@@ -45,10 +45,22 @@ end
 
 group :development do
   gem 'letter_opener'
+  gem 'dotenv-rails'
 end
 
 gem 'twitter-bootstrap-rails'
 gem 'jquery-turbolinks'
 
 gem 'devise'
+
+gem 'therubyracer', platforms: :ruby
+gem 'rails_admin'
+gem 'cancan'
+
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+
+gem 'carrierwave'
+gem 'rmagick'
 

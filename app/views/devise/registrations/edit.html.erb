@@ -5,14 +5,17 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= devise_error_messages! %>
     
+    <% if @user.provider != 'facebook' && @user.provider != 'twitter' %>
       <div class="field">
         <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "メールアドレス" %>
       </div>
+    <% end %>
       
       <div class="field">
         <%= f.text_field :name, class: "form-control", class: "form-control", placeholder: "名前" %>
       </div>
     
+    <% if @user.provider != 'facebook' && @user.provider != 'twitter' %>
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
@@ -24,9 +27,19 @@
       <div class="field">
         <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "新しいパスワード（確認）" %>
       </div>
+    <% end %>
     
+    <!--
       <div class="field">
         <%= f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "パスワード（現在）" %>
+      </div>
+    -->
+    
+      
+      <div class="field">
+        <p><%= profile_img(@user) if profile_img(@user) %></p>
+        <%= f.file_field :avatar %>
+        <%= f.hidden_field :avatar_cache %>
       </div>
     
       <div class="actions">
