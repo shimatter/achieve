@@ -1,18 +1,26 @@
 <%= form_for(@picture) do |f| %>
 
-<% if @picture.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= @picture.errors.count %>件のエラーがあります。</h2>
+<%= f.error_messages! %>
 
-    <ul>
-    <% @picture.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
+<%= f.text_field :content, class: 'form-control', placeholder: "コメント" %>
+<div class="field">
+    <% if @picture.img? %>
+      <div class="thumbnail">
+        <%= image_tag @picture.img.url %>
+      </div>
+    <% end %><br>
+    <%= f.file_field :img %>
+    <%= f.hidden_field :img_cache %>
   </div>
-<% end %>
-
-<%= f.text_field :content, class: 'form-control', placeholder: "内容" %>
+  <div class="field">
+    <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+    <% if @picture.persisted? && @picture.img? %>
+      <label>
+        <%= f.check_box :remove_img %>
+        画像を削除
+      </label>
+    <% end %>
+  </div>
 <br>
 <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
 <% end %>
