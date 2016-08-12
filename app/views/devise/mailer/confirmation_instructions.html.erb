@@ -1,5 +1,5 @@
-<p> <%= @email %>!</p>
+<p>こんにちは <%= @email %>!</p>
 
-<p></p>
+<p>下記リンクより本登録を行って下さい</p>
 
 <p><%= link_to 'hontouroku', confirmation_url(@resource, confirmation_token: @token) %></p>
