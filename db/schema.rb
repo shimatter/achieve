@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20160812042631) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
-    t.string   "image"
     t.string   "img"
   end
 

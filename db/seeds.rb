@@ -10,13 +10,11 @@
 
 
 10.times do |n|
-    name = "name#{n+1}"
-    email = "name#{n+1}@hogehoge.com"
-    password = "password#{n+1}"
-    User.create!(name: name,
-        email: email,
-        password: password,
-        password_confirmation: password,
-        uid: "11111#{n+1}")
+    picture = Picture.new
+    image_src = File.join(Rails.root, "/db/fixtures/#{n+1}.jpg")
+    src_file = File.new(image_src)
+    picture.img = src_file
+    picture.content = "comment#{n+1}"
+    picture.user_id = #{n+1}
+    picture.save
 end
-

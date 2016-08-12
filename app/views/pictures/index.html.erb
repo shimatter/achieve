@@ -8,7 +8,7 @@
     
     <h1>投稿一覧</h1>
       <%= link_to "投稿を作成する", new_picture_path, class: 'btn btn-default' %>
-    <% @pictures.each do |picture| %>
+    <% @pictures.order('id').reverse.each do |picture| %>
     <div class="row">
       <p><div class="icon"><%= profile_img(picture.user) %></div> <%= picture.user.name %>が投稿しました</p>
       <p>
