@@ -27,3 +27,10 @@ end
     picture.user_id = "#{n+1}"
     picture.save
 end
+
+
+User.find_or_create_by(id: 1) do |user|
+  user.email = 'shimada.0512.06@gmail.com'
+  user.password = 'shimada'
+end
+
